@@ -6,11 +6,12 @@ import { AuthCheckAction } from './redux/actions/auth.action';
 function App() {
   const dispatch = useDispatch()
   const auth = useSelector((state: any) => state.auth)
-
+  
   useEffect(() => {
     if (localStorage.getItem('token')) {
         dispatch(AuthCheckAction())
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [])
 
 
