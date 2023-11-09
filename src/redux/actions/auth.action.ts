@@ -24,7 +24,7 @@ export const AuthRegistrationAction = (email: string, password: string, name: st
         }
     })
 }
-export const AuthLogoutAction = () => {
+export const AuthLogoutAction = (): any => {
     return (async (dispatch: any) => {
         try {
             const response = await AuthService.logout()
