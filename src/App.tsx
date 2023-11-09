@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import LoginForm from './components/login.form';
+import { useDispatch, useSelector } from 'react-redux';
+import { AuthCheckAction } from './redux/actions/auth.action';
 
 function App() {
+  const dispatch = useDispatch()
+  const auth = useSelector((state: any) => state.auth)
+
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+        dispatch(AuthCheckAction())
+    }
+}, [])
+
+
   return (
     <>
+      <h1>{auth.isLogin ? `Пользователь авторизован ${auth.user.email}` : 'Необходимо авторизоваться'}</h1>
       <LoginForm/>
     </>
   );

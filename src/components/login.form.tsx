@@ -9,10 +9,13 @@ const LoginForm: FC = () => {
     const [password, setPassword] = useState<string>('')
 
     return <>
-        <input type="text" placeholder="email" value={email} onChange={e => setEmail(e.target.value)}/>
-        <input type="password" placeholder="password" value={password} onChange={e => setPassword(e.target.value)}/>
-        <button onClick={()=> {dispatch(AuthLoginAction(email, password))}}>Login</button>
-        <div>{auth ? <button onClick={()=>dispatch(AuthLogoutAction())}>Logout</button> : null}</div>
+    {auth   ? <div> <button onClick={()=>dispatch(AuthLogoutAction())}>Logout</button></div>
+            : <div>
+                <input type="text" placeholder="email" value={email} onChange={e => setEmail(e.target.value)}/>
+                <input type="password" placeholder="password" value={password} onChange={e => setPassword(e.target.value)}/>
+                <button onClick={()=> {dispatch(AuthLoginAction(email, password))}}>Login</button>
+            </div>
+            }
     </>
 }
 
