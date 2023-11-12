@@ -5,7 +5,7 @@ const usersReducers = (state=[], action: IAction) => {
     switch (action.type) {
         case DATA_USER:
             return {
-                ...state, users: {...action.payload}
+                ...state, users: [...action.payload]
             }
         default:
             return state
