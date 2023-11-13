@@ -1,11 +1,11 @@
 import api from "../api";
 import { AxiosResponse } from "axios";
 
-import { IUser } from "../models/IUser";
+import { allUser } from "../models/allUsers";
 
 class  UsersService {
-    static async getUser():Promise<AxiosResponse<IUser[]>> {
-        return api.get<IUser[]>('/user')
+    static async getUser():Promise<AxiosResponse<allUser[]>> {
+        return api.get<allUser[]>('/user')
     }
 }
 export default UsersService

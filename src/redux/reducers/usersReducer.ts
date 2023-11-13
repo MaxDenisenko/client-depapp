@@ -4,9 +4,7 @@ import { IAction } from "./types"
 const usersReducers = (state=[], action: IAction) => {
     switch (action.type) {
         case DATA_USER:
-            return {
-                ...state, users: [...action.payload]
-            }
+            return {...state, users: [...action.payload]}
         default:
             return state
     }
