@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import LoginForm from './components/login.form';
 import { useDispatch, useSelector } from 'react-redux';
 import { AuthCheckAction } from './redux/actions/auth.action';
+import ZapisList from './components/zapisList';
 
 function App() {
   const dispatch = useDispatch()
@@ -17,8 +18,8 @@ function App() {
 
   return (
     <>
-      <h1>{auth.isLogin ? `Пользователь авторизован ${auth.user.email}` : 'Необходимо авторизоваться'}</h1>
-      <LoginForm/>
+      <h1>{auth.isLogin ? <ZapisList/> : <LoginForm/>}</h1>
+      
     </>
   );
 }
