@@ -23,7 +23,7 @@ function Copyright(props: any) {
     return (
       <Typography variant="body2" color="text.secondary" align="center" {...props}>
         {'Copyright © '}
-        <Link color="inherit" href="https://depapp.com/">
+        <Link color="inherit" href="https://depapp.ru/">
           DEPAPP.RU
         </Link>{' '}
         {new Date().getFullYear()}
