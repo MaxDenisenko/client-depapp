@@ -6,7 +6,6 @@ export const GetZapis = ():any=> {
     return async (dispatch: any) => {
         try {
             const response = await ZapisService.getZapis()
-            console.log(response);
             dispatch({type: DATA_ZAPIS, payload: response.data})
         } catch (error: any) {
             console.log(error.response?.data?.message);

@@ -5,7 +5,6 @@ export const GetDataUsers = ():any=> {
     return async (dispatch: any) => {
         try {
             const response = await UsersService.getUser()
-            console.log(response);
             dispatch({type: DATA_USER, payload: response.data})
         } catch (error: any) {
             console.log(error.response?.data?.message);

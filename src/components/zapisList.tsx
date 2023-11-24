@@ -33,7 +33,7 @@ const ZapisList:FC = () => {
         <input placeholder="Комментарий" type="text"></input>
         <button>Ввести</button>
         <hr/>
-        <div style={{height: 400, widows:'100%'}}>
+        <div style={{height: '100%', width:'100%'}}>
         {zapis && <DataGrid
             rows={zapis}
             columns={columns}
