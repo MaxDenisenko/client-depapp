@@ -33,45 +33,19 @@ const ZapisList:FC = () => {
         <input placeholder="Комментарий" type="text"></input>
         <button>Ввести</button>
         <hr/>
+        <div style={{height: 400, widows:'100%'}}>
         {zapis && <DataGrid
             rows={zapis}
             columns={columns}
             initialState={{
                 pagination: {
-                  paginationModel: { page: 0, pageSize: 5 },
+                  paginationModel: { page: 0, pageSize: 9 },
                 },
               }}
-              pageSizeOptions={[5, 10]}
+              pageSizeOptions={[9, 10]}
               checkboxSelection
             />}
-        
-        {/* <table>
-            <tr>
-                <td>Индекс</td>
-                <td>Дата</td>
-                <td>Зона</td>
-                <td>Сумма</td>
-                <td>ФИО клиента</td>
-                <td>Телефон клиента</td>
-                <td>Комментарий</td>
-            </tr>
-            <tbody>
-            {zapis && zapis.map(((zapis: any) => {
-                return (
-                    <tr key={zapis.id}>
-                    <td>{zapis.id}</td>
-                    <td>{zapis.date}</td>
-                    <td>{zapis.area}</td>
-                    <td>{zapis.sum}</td>
-                    <td>{zapis.fioClient}</td>
-                    <td>{zapis.phoneClient}</td>
-                    <td>{zapis.comment}</td>
-                </tr>
-                )
-                
-            }))}
-            </tbody>
-        </table> */}
+        </div>
     </>
 }
 
