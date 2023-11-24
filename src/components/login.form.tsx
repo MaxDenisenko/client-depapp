@@ -1,5 +1,5 @@
 import React, {FC, useState} from "react";
-import { AuthLoginAction, AuthLogoutAction } from "../redux/actions/auth.action";
+import { AuthLoginAction } from "../redux/actions/auth.action";
 import { useDispatch, useSelector } from "react-redux";
 // import { GetDataUsers } from "../redux/actions/users.action";
 

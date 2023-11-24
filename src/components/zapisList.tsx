@@ -1,7 +1,7 @@
 import { FC, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { GetZapis } from "../redux/actions/zapis.action"
-
+import {AuthLogoutAction } from "../redux/actions/auth.action";
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 
 
@@ -25,6 +25,8 @@ const ZapisList:FC = () => {
     ]
 
     return <>
+        <button onClick={()=>dispatch(AuthLogoutAction())}>Logout</button>
+        <hr/>
         <input placeholder="Выберите дату" type="date"></input>
         <input placeholder="Выберите зону" type="text"></input>
         <input placeholder="Введите сумму" type="number"></input>
