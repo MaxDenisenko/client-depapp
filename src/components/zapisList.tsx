@@ -2,6 +2,9 @@ import { FC, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { GetZapis } from "../redux/actions/zapis.action"
 
+import { DataGrid, GridColDef } from '@mui/x-data-grid';
+
+
 const ZapisList:FC = () => {
     const dispatch = useDispatch()
     const zapis = useSelector ((state: any) => state.zapis.zapis)
@@ -10,6 +13,17 @@ const ZapisList:FC = () => {
         dispatch(GetZapis())
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
+
+    const columns:GridColDef[]= [
+            {field: 'id', headerName: 'ID', width: 20},
+            {field: 'date', headerName: 'Дата', width: 140},
+            {field: 'area', headerName: 'Зона', width: 150},
+            {field: 'sum',type: 'number', headerName: 'Сумма', width: 80},
+            {field: 'fioClient', headerName: 'Фамилия клиентки', width: 260},
+            {field: 'phoneClient', headerName: 'Телефон клиентки', width: 140},
+            {field: 'comment', headerName: 'Комментарий', width: 380},
+    ]
+
     return <>
         <input placeholder="Выберите дату" type="date"></input>
         <input placeholder="Выберите зону" type="text"></input>
@@ -19,7 +33,19 @@ const ZapisList:FC = () => {
         <input placeholder="Комментарий" type="text"></input>
         <button>Ввести</button>
         <hr/>
-        <table>
+        {zapis && <DataGrid
+            rows={zapis}
+            columns={columns}
+            initialState={{
+                pagination: {
+                  paginationModel: { page: 0, pageSize: 5 },
+                },
+              }}
+              pageSizeOptions={[5, 10]}
+              checkboxSelection
+            />}
+        
+        {/* <table>
             <tr>
                 <td>Индекс</td>
                 <td>Дата</td>
@@ -45,7 +71,7 @@ const ZapisList:FC = () => {
                 
             }))}
             </tbody>
-        </table>
+        </table> */}
     </>
 }
 
