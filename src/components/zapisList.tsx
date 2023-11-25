@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { GetZapis } from "../redux/actions/zapis.action"
 import {AuthLogoutAction } from "../redux/actions/auth.action";
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
+import ResponsiveAppBar from "./appNav";
 
 
 const ZapisList:FC = () => {
@@ -25,8 +26,9 @@ const ZapisList:FC = () => {
     ]
 
     return <>
-        <button onClick={()=>dispatch(AuthLogoutAction())}>Logout</button>
-        <hr/>
+        <ResponsiveAppBar/>
+        {/* <button onClick={()=>dispatch(AuthLogoutAction())}>Logout</button> */}
+        {/* <hr/>
         <input placeholder="Выберите дату" type="date"></input>
         <input placeholder="Выберите зону" type="text"></input>
         <input placeholder="Введите сумму" type="number"></input>
@@ -34,7 +36,7 @@ const ZapisList:FC = () => {
         <input placeholder="Введите телефон" type="text"></input>
         <input placeholder="Комментарий" type="text"></input>
         <button>Ввести</button>
-        <hr/>
+        <hr/> */}
         <div style={{height: '100%', width:'100%'}}>
         {zapis && <DataGrid
             rows={zapis}
