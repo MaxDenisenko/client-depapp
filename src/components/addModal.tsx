@@ -3,13 +3,12 @@ import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { TextField } from "@mui/material";
 import Slide from '@mui/material/Slide';
 import { TransitionProps } from '@mui/material/transitions';
 import { useDispatch } from "react-redux";
-import { CreateZapis, GetZapis } from "../redux/actions/zapis.action";
+import { CreateZapis } from "../redux/actions/zapis.action";
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -42,7 +41,6 @@ export default function AddModal({open, setOpen}: any) {
     setPhoneClient('')
     setComment('')
     handleClose()
-
   }
 
   return (

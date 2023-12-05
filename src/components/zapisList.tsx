@@ -51,6 +51,7 @@ const ZapisList:FC = () => {
               }}
               pageSizeOptions={[10, 20]}
               slots={{ toolbar: QuickSearchToolbar }}
+              autoHeight
             />}
         </Box>
         </Box>
