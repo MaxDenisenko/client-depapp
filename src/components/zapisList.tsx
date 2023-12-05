@@ -1,7 +1,6 @@
 import { FC, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { GetZapis } from "../redux/actions/zapis.action"
-import {AuthLogoutAction } from "../redux/actions/auth.action";
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import ResponsiveAppBar from "./appNav";
 
@@ -27,16 +26,6 @@ const ZapisList:FC = () => {
 
     return <>
         <ResponsiveAppBar/>
-        {/* <button onClick={()=>dispatch(AuthLogoutAction())}>Logout</button> */}
-        {/* <hr/>
-        <input placeholder="Выберите дату" type="date"></input>
-        <input placeholder="Выберите зону" type="text"></input>
-        <input placeholder="Введите сумму" type="number"></input>
-        <input placeholder="Введите ФИО" type="text"></input>
-        <input placeholder="Введите телефон" type="text"></input>
-        <input placeholder="Комментарий" type="text"></input>
-        <button>Ввести</button>
-        <hr/> */}
         <div style={{height: '100%', width:'100%'}}>
         {zapis && <DataGrid
             rows={zapis}
@@ -47,7 +36,6 @@ const ZapisList:FC = () => {
                 },
               }}
               pageSizeOptions={[9, 10]}
-              checkboxSelection
             />}
         </div>
     </>

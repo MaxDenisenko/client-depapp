@@ -3,14 +3,11 @@ import { AxiosResponse } from "axios";
 import { AuthResponse } from "../models/response/auth.response";
 
 class  ZapisService {
-    static async login(email:string , password: string):Promise<AxiosResponse<AuthResponse>> {
-        return api.post<AuthResponse>('/login',{email, password})
-    }
-    static async registration(email:string , password: string, name: string, lastname: string):Promise<AxiosResponse<AuthResponse>> {
-        return api.post<AuthResponse>('/registration',{email, password, name, lastname})
-    }
     static async getZapis():Promise<AxiosResponse> {
         return api.get('/zapis')
+    }
+    static async createZapis(date: any, area: any, sum: any, fioClient:any, phoneClient:any, comment:any):Promise<AxiosResponse> {
+        return api.post('zapis', {date, area, sum, fioClient, phoneClient, comment})
     }
 }
 

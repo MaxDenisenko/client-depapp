@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useState} from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -14,34 +14,39 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import {AuthLogoutAction } from "../redux/actions/auth.action";
 import { useDispatch } from 'react-redux';
+import AddModal from './addModal';
 
-const pages = ['Главная', 'Диаграммы'];
+const pages = ['Финансы'];
 const settings = ['Профиль', 'Выйти'];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
   const dispatch = useDispatch()
-
+  
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
   };
-
+  
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
-
+  
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
   const handleLogout = (settings: string) => {
     if(settings === 'Выйти') {
-        dispatch(AuthLogoutAction())
+      dispatch(AuthLogoutAction())
     }
     return null
+  }
+  const [open, setOpen] = useState(false);
+  const handleAddNewZapis = () => {
+    setOpen(true)
   }
 
   return (
@@ -64,9 +69,12 @@ function ResponsiveAppBar() {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            DepApp.ru
           </Typography>
-
+          <Box sx={{marginRight: 10}}>
+            <Button variant="contained" color="success" onClick={handleAddNewZapis}>Добавить запись</Button>
+            <AddModal open={open} setOpen={setOpen}/>
+          </Box>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
@@ -120,7 +128,7 @@ function ResponsiveAppBar() {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            DepApp
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
