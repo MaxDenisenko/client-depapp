@@ -1,9 +1,22 @@
 import { FC, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { GetZapis } from "../redux/actions/zapis.action"
-import { DataGrid, GridColDef } from '@mui/x-data-grid';
+import { DataGrid, GridColDef, GridToolbarQuickFilter } from '@mui/x-data-grid';
 import ResponsiveAppBar from "./appNav";
+import Box from '@mui/material/Box';
 
+function QuickSearchToolbar() {
+    return (
+      <Box
+        sx={{
+          p: 0.5,
+          pb: 0,
+        }}
+      >
+        <GridToolbarQuickFilter placeholder="Поиск"/>
+      </Box>
+    );
+  }
 
 const ZapisList:FC = () => {
     const dispatch = useDispatch()
@@ -26,18 +39,21 @@ const ZapisList:FC = () => {
 
     return <>
         <ResponsiveAppBar/>
-        <div style={{height: '100%', width:'100%'}}>
+        <Box sx={{ overflow: "auto" }}>
+        <Box sx={{width: "100%", display: "table", tableLayout: "fixed"}}>
         {zapis && <DataGrid
             rows={zapis}
             columns={columns}
             initialState={{
                 pagination: {
-                  paginationModel: { page: 0, pageSize: 9 },
+                  paginationModel: { page: 0, pageSize: 10 },
                 },
               }}
-              pageSizeOptions={[9, 10]}
+              pageSizeOptions={[10, 20]}
+              slots={{ toolbar: QuickSearchToolbar }}
             />}
-        </div>
+        </Box>
+        </Box>
     </>
 }
 
