@@ -9,7 +9,7 @@ class  ZapisService {
         return api.post('/zapis', {date, area, sum, fioClient, phoneClient, comment})
     }
     static async deleteZapis(id: string):Promise<AxiosResponse> {
-        return api.delete(`/zapis/:${id}`)
+        return api.delete(`/zapis/${id}`)
     }
 }
 
