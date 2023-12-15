@@ -12,7 +12,7 @@ import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import FemaleIcon from '@mui/icons-material/Female';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import image from '../assets/img/wall_login.jpg'
@@ -70,10 +70,13 @@ const LoginForm: FC = () => {
             }}
           >
             <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-              <LockOutlinedIcon />
+              <FemaleIcon />
             </Avatar>
-            <Typography component="h1" variant="h5">
-              Войти
+            <Typography component="h3" variant="h3">
+              DepApp.ru
+            </Typography>
+            <Typography component="h5" variant="h5">
+              (Приложение учета клиентов и финансов)
             </Typography>
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
               <TextField
