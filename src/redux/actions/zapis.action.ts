@@ -25,3 +25,17 @@ export const CreateZapis = (date: any, area: any, sum: any, fioClient: any, phon
         }
     }
 }
+export const DeleteZapis = (id:any):any => {
+    return async (dispatch: any) => {
+        try {
+            const response = await ZapisService.deleteZapis(id)
+            console.log(response)
+            // dispatch({type: DATA_ZAPIS, payload: response.data})
+        } catch (error) {
+            console.log(error)
+        }
+        finally {
+            dispatch(GetZapis())
+        }
+    }
+}
