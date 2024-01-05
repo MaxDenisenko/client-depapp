@@ -16,10 +16,12 @@ export const CreateZapis = (id: any, date: any, area: any, sum: any, fioClient: 
     return async (dispatch: any) => {
         try {
             if (id) {
-                const response = await ZapisService.createZapis(id, date, area, sum, fioClient, phoneClient, comment)    
+                const response = await ZapisService.updateZapis(id, date, area, sum, fioClient, phoneClient, comment)    
+                dispatch ({type: CREATE_ZAPIS, payload: response.data})
+            }else {
+                const response = await ZapisService.createZapis(date, area, sum, fioClient, phoneClient, comment)
+                dispatch ({type: CREATE_ZAPIS, payload: response.data})
             }
-            const response = await ZapisService.createZapis(id=null, date, area, sum, fioClient, phoneClient, comment)
-            dispatch ({type: CREATE_ZAPIS, payload: response.data})
         } catch (error) {
             console.log(error)
         }
