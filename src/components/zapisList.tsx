@@ -1,4 +1,4 @@
-import { FC, useEffect } from "react"
+import { FC, useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { DeleteZapis, GetZapis } from "../redux/actions/zapis.action"
 import { DataGrid, GridColDef, GridToolbarQuickFilter, GridActionsCellItem, GridRowId } from '@mui/x-data-grid';
@@ -6,6 +6,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/DeleteOutlined';
 import ResponsiveAppBar from "./appNav";
 import { Box } from '@mui/material';
+import AddModal from "./addModal";
 
 function QuickSearchToolbar() {
     return (
@@ -18,13 +19,17 @@ function QuickSearchToolbar() {
 const ZapisList: FC = () => {
     const dispatch = useDispatch()
     const zapis = useSelector((state: any) => state.zapis.zapis)
+    const [open, setOpen] = useState(false)
+    const [zapisId, setZapisId] = useState<any|null>(null)
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useEffect(() => {
         dispatch(GetZapis())
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-    const handleEditClick = (id: any) => {
-        return id
+
+    const handleEditClick = (id: GridRowId) => () => {
+        setZapisId(id)
+        setOpen(true)
     }
     const handleDeleteClick = (id: GridRowId) => () => {
         dispatch(DeleteZapis(id))
@@ -61,6 +66,7 @@ const ZapisList: FC = () => {
         <ResponsiveAppBar />
         <Box sx={{ overflow: "auto" }}>
             <Box sx={{ width: "100%", display: "table", tableLayout: "fixed" }}>
+            {open && <AddModal open={open} setOpen={setOpen} id={zapisId}/>}
                 {zapis && <DataGrid
                     rows={zapis}
                     columns={columns}

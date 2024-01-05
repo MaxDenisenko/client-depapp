@@ -12,10 +12,13 @@ export const GetZapis = ():any=> {
         }
     }
 }
-export const CreateZapis = (date: any, area: any, sum: any, fioClient: any, phoneClient: any, comment: any ): any => {
+export const CreateZapis = (id: any, date: any, area: any, sum: any, fioClient: any, phoneClient: any, comment: any ): any => {
     return async (dispatch: any) => {
         try {
-            const response = await ZapisService.createZapis(date, area, sum, fioClient, phoneClient, comment)
+            if (id) {
+                const response = await ZapisService.createZapis(id, date, area, sum, fioClient, phoneClient, comment)    
+            }
+            const response = await ZapisService.createZapis(id=null, date, area, sum, fioClient, phoneClient, comment)
             dispatch ({type: CREATE_ZAPIS, payload: response.data})
         } catch (error) {
             console.log(error)
@@ -28,8 +31,7 @@ export const CreateZapis = (date: any, area: any, sum: any, fioClient: any, phon
 export const DeleteZapis = (id:any):any => {
     return async (dispatch: any) => {
         try {
-            const response = await ZapisService.deleteZapis(id)
-            console.log(response)
+            await ZapisService.deleteZapis(id)
             // dispatch({type: DATA_ZAPIS, payload: response.data})
         } catch (error) {
             console.log(error)

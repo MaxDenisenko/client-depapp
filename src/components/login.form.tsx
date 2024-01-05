@@ -1,4 +1,4 @@
-import React, {FC, useState} from "react";
+import React, { FC, useState } from "react";
 import { AuthLoginAction } from "../redux/actions/auth.action";
 import { useDispatch } from "react-redux";
 
@@ -19,30 +19,30 @@ import image from '../assets/img/wall_login.jpg'
 
 
 function Copyright(props: any) {
-    return (
-      <Typography variant="body2" color="text.secondary" align="center" {...props}>
-        {'Copyright © '}
-        <Link color="inherit" href="https://depapp.ru/">
-          DEPAPP.RU
-        </Link>{' '}
-        {new Date().getFullYear()}
-        {'.'}
-      </Typography>
-    );
-  }
+  return (
+    <Typography variant="body2" color="text.secondary" align="center" {...props}>
+      {'Copyright © '}
+      <Link color="inherit" href="https://depapp.ru/">
+        DEPAPP.RU
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}
 
 const LoginForm: FC = () => {
-    const dispatch = useDispatch()
-    const [email, setEmail] = useState<string>('')
-    const [password, setPassword] = useState<string>('')
-    const defaultTheme = createTheme();
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        dispatch(AuthLoginAction(email, password))
-      };
+  const dispatch = useDispatch()
+  const [email, setEmail] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
+  const defaultTheme = createTheme();
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    dispatch(AuthLoginAction(email, password))
+  };
 
-    return <>
-        <ThemeProvider theme={defaultTheme}>
+  return <>
+    <ThemeProvider theme={defaultTheme}>
       <Grid container component="main" sx={{ height: '100vh' }}>
         <CssBaseline />
         <Grid
@@ -88,7 +88,7 @@ const LoginForm: FC = () => {
                 name="email"
                 autoComplete="email"
                 autoFocus
-                value={email} 
+                value={email}
                 onChange={e => setEmail(e.target.value)}
               />
               <TextField
@@ -100,7 +100,7 @@ const LoginForm: FC = () => {
                 type="password"
                 id="password"
                 autoComplete="current-password"
-                value={password} 
+                value={password}
                 onChange={e => setPassword(e.target.value)}
               />
               <FormControlLabel
@@ -133,7 +133,7 @@ const LoginForm: FC = () => {
         </Grid>
       </Grid>
     </ThemeProvider>
-    </>
+  </>
 }
 
 export default LoginForm
