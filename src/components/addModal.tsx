@@ -80,7 +80,7 @@ export default function AddModal({ open, setOpen, id = null }: any) {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Отмена</Button>
-          <Button onClick={handleSendData}>Добавить</Button>
+          <Button onClick={handleSendData}>{!id ? 'Добавить' : 'Изменить'}</Button>
         </DialogActions>
       </Dialog>
     </React.Fragment>
