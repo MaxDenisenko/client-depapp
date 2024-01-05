@@ -74,6 +74,7 @@ const ZapisList: FC = () => {
                         pagination: {
                             paginationModel: { page: 0, pageSize: 10 },
                         },
+                        sorting:{ sortModel:[{field:'date', sort:'desc'}]}
                     }}
                     pageSizeOptions={[10, 20]}
                     slots={{ toolbar: QuickSearchToolbar }}

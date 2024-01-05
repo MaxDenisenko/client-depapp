@@ -48,7 +48,7 @@ export default function AddModal({ open, setOpen, id = null }: any) {
   const handleSendData = () => {
     if (id !== null){
       dispatch(CreateZapis(id, date, area, sum, fioClient, phoneClient, comment))
-    } else {
+    } else {      
       dispatch(CreateZapis(id, date, area, sum, fioClient, phoneClient, comment))
     }
     setDate('')
@@ -71,7 +71,7 @@ export default function AddModal({ open, setOpen, id = null }: any) {
       >
         <DialogTitle>Новая запись</DialogTitle>
         <DialogContent sx={{ display: "flex", flexFlow: "column" }}>
-          <TextField variant="outlined" type="date" sx={{ marginTop: 2 }} value={date} onChange={(e) => setDate(e.target.value)} />
+          <TextField variant="outlined" type="date" sx={{ marginTop: 2 }} value={date.split('T')[0]} onChange={(e) => setDate(e.target.value)} />
           <TextField label="Зона" variant="outlined" sx={{ marginTop: 2 }} value={area} onChange={(e) => setArea(e.target.value)} />
           <TextField label="Сумма" variant="outlined" type="number" sx={{ marginTop: 2 }} value={sum} onChange={(e) => setSum(e.target.value)} />
           <TextField label="ФИО клиента" variant="outlined" sx={{ marginTop: 2 }} value={fioClient} onChange={(e) => setFioClient(e.target.value)} />
