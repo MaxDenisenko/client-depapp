@@ -18,8 +18,8 @@ function App() {
   if(auth.isLoading) {
     return <Loader/>
   }
-  
-  if(auth.isLogin) {
+
+  if(!auth.isLogin) {
     <LoginForm/>
   }
   return <ZapisList/>
