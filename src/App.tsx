@@ -19,10 +19,10 @@ function App() {
     return <Loader/>
   }
 
-  if(!auth.isLogin) {
-    <LoginForm/>
+  if(auth.isLogin) {
+    return <ZapisList/>
   }
-  return <ZapisList/>
+  return <LoginForm/>
       
 }
 
