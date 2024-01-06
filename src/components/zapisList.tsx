@@ -7,6 +7,7 @@ import DeleteIcon from '@mui/icons-material/DeleteOutlined';
 import ResponsiveAppBar from "./appNav";
 import { Box } from '@mui/material';
 import AddModal from "./addModal";
+import Loader from "./loader";
 
 function QuickSearchToolbar() {
     return (
@@ -19,6 +20,7 @@ function QuickSearchToolbar() {
 const ZapisList: FC = () => {
     const dispatch = useDispatch()
     const zapis = useSelector((state: any) => state.zapis.zapis)
+    const auth = useSelector((state:any)=> state.auth.isLogin)
     const [open, setOpen] = useState(false)
     const [zapisId, setZapisId] = useState<any|null>(null)
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -61,7 +63,9 @@ const ZapisList: FC = () => {
         { field: 'phoneClient', headerName: 'Телефон клиентки', width: 140 },
         { field: 'comment', headerName: 'Комментарий', width: 380 },
     ]
-
+    if (!auth) {
+        return <Loader/>
+    }
     return <>
         <ResponsiveAppBar />
         <Box sx={{ overflow: "auto" }}>
