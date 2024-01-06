@@ -1,6 +1,6 @@
 import axios from "axios";
 import AuthService from "../../service/auth.service";
-import { AUTH_DATA_USER } from "../const";
+import { AUTH_DATA_USER, LOADER } from "../const";
 import { API_URL } from "../../api";
 import { AuthResponse } from "../../models/response/auth.response";
 
@@ -39,12 +39,16 @@ export const AuthLogoutAction = (): any => {
 }
 export const AuthCheckAction = (): any => {
     return (async (dispatch: any) => {
+        dispatch({type: LOADER})
         try {
             const response = await axios.get<AuthResponse>(`${API_URL}/refresh`, { withCredentials: true})
             localStorage.setItem('token', response.data.accessToken)
             dispatch({type: AUTH_DATA_USER, payload: response.data})
         } catch (error: any) {
             console.log(error.response?.data?.message);
+        }
+        finally {
+            dispatch({type: LOADER})
         }
     })
 }
